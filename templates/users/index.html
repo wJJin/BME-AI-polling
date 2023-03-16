@@ -1,0 +1,42 @@
+<!--Pattern HTML-->
+<!DOCTYPE html>
+{% load static %}
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUFSBMEAI</title>
+
+    <link rel="stylesheet" href="{% static 'css/users/index.css' %}">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+    <script type="text/javascript">
+        location.href="/polling";
+    </script>
+    {% else %}
+    <main style="text-align: center; margin-top: 10%">
+        <h1>바이오메디컬인공지능</h1>
+        <img class="" src="{% static 'img/users/logo2.png' %}" alt="" width="200" height="200">
+        <br>
+        <button style="margin-top: 10px;">
+            학번을 입력하세요.
+            <form action="" method="POST" name="login">
+              {% csrf_token %}
+              
+              <input
+                type="text"
+                name="username"
+                class="hide"
+                required
+                autocomplete="off"/>
+            </form>
+    
+        </button>
+    </main>
+    {% endif %}
+
+</body>
+</html>

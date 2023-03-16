@@ -1,0 +1,66 @@
+<!--Pattern HTML-->
+<!DOCTYPE html>
+{% load static %}
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUFSBMEAI</title>
+
+    <link rel="stylesheet" href="{% static 'css/polling/result.css' %}">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="header">	
+        <section class="pattern-description">
+            <h1>Voting Result!</h1>
+            <p>투표 결과는 10위까지 보여집니다.</p>
+        </section>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+              <table class="table table-image">
+                <thead>
+                  <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Image's Name</th>
+                    <th scope="col">Votes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for k in data %}
+                    <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td class="w-25">
+                        <img src="{% static 'img/polling/'%}{{k.0}}.png" class="img-fluid img-thumbnail">
+                    </td>
+                    <td>{{k.1}}</td>
+                    <td>{{k.2}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>   
+          </div>
+        </div>
+        
+      </div>
+
+      <section style="text-align: center; margin-top: 20px;">
+        <a href="/polling">투표하기</a>
+        <a href="/logout">logout</a>
+      </section>
+    {% else %}
+    <script type="text/javascript">
+        location.href="/";
+    </script>
+    {% endif %}
+
+  
+</body>
+</html>

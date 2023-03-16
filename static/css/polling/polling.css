@@ -1,0 +1,58 @@
+.header {
+    text-align: center;
+}
+
+.pattern {
+    text-align: center;
+}
+
+.grid {
+    overflow: hidden;
+    padding: 0.5em 0 0 0.5em;
+    max-width: 76em;
+    margin: 0 auto;
+}
+
+.grid li {
+    padding: 0 0.5em 0.5em 0;
+    list-style-type: none;
+}
+
+.grid li > img {
+    width: 14em;
+    height: 14em;
+    background-size: contain;
+}
+
+
+@media all and (min-width: 27em) {
+    .grid li {
+        width: 45%;
+        float: left;
+    }
+
+
+}
+
+@media all and (min-width: 40em) {
+    .grid li {
+        width: 30%;
+    }
+    .grid li.wide {
+        width: 60%;
+    }
+
+
+}
+
+@media all and (min-width: 60em) {
+    .grid li {
+        width: 24%;
+    }
+    .grid li.wide {
+        width: 50%;
+    }
+
+
+}
+
